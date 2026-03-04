@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central Roleplay | Portal Oficial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --bg: #050505;
+            --surface: #121212;
+            --glass: rgba(255, 255, 255, 0.03);
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+            --green: #22c55e;
+            --red: #ef4444;
+            --discord: #5865F2;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVEGAÇÃO --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(5, 5, 5, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            gap: 10px;
+            background: var(--glass);
+            padding: 5px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        nav a:hover { color: white; }
+        nav a.active { background: white; color: black; }
+
+        .container {
+            max-width: 1000px;
+            margin: 120px auto 50px;
+            padding: 0 20px;
+        }
+
+        /* --- SISTEMA DE ABAS --- */
+        .tab-content, .subtab-content, .subsubtab-content { display: none; }
+        .tab-content.active, .subtab-content.active, .subsubtab-content.active { display: block; animation: fadeIn 0.5s; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- LOGO --- */
+        .logo-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo-img {
+            max-width: 200px;
+            height: auto;
+        }
+
+        h1 { font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; text-align: center; margin-bottom: 10px; }
+        h2 { font-size: 1.2rem; margin-bottom: 30px; text-align: center; color: var(--text-dim); }
+
+        .card {
+            background: var(--surface);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .action-img {
+            max-width: 100%;
+            border-radius: 15px;
+            margin-top: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* --- SUB MENU --- */
+        .submenu {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .submenu a {
+            background: var(--surface);
+            color: var(--text-dim);
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .submenu a:hover { background: #1a1a1a; color: white; }
+        .submenu a.active { background: var(--primary); color: white; }
+
+        /* --- TABELAS --- */
+        table { width: 100%; border-collapse: separate; border-spacing: 0 8px; margin-top: 15px; }
+        th { padding: 15px 20px; color: var(--text-dim); font-size: 0.75rem; text-transform: uppercase; text-align: left; }
+        td { padding: 15px 20px; background: var(--surface); border-top: 1px solid rgba(255, 255, 255, 0.03); border-bottom: 1px solid rgba(255, 255, 255, 0.03); }
+        td:first-child { border-left: 1px solid rgba(255, 255, 255, 0.03); border-radius: 12px 0 0 12px; }
+        td:last-child { border-right: 1px solid rgba(255, 255, 255, 0.03); border-radius: 0 12px 12px 0; }
+
+        /* --- INPUTS --- */
+        input[type="number"] { background: #1a1a1a; border: 1px solid #333; color: white; padding: 5px; border-radius: 6px; width: 50px; }
+        input[type="checkbox"] { accent-color: var(--primary); width: 16px; height: 16px; }
+
+        /* --- CALCULADORA --- */
+        .calculator-footer {
+            position: fixed; bottom: 20px; right: 20px;
+            background: #1a1a1a; color: white;
+            padding: 20px; border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            font-weight: 700; z-index: 100;
+            border: 1px solid rgba(255,255,255,0.1);
+            min-width: 250px;
+        }
+        .calc-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        .calc-label { color: var(--text-dim); font-size: 0.8rem; }
+        .calc-total { color: var(--green); margin-top: 5px; padding-top: 5px; border-top: 1px solid #333; }
+
+        .btn {
+            background: var(--primary); color: white; padding: 15px 30px;
+            border-radius: 50px; text-decoration: none; font-weight: 700; display: inline-block;
+            transition: var(--transition);
+        }
+        .btn:hover { filter: brightness(1.2); }
+        .btn-discord { background: var(--discord); }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <a href="#inicio" id="link-inicio">Início</a>
+        <a href="#regras" id="link-regras">Regras</a>
+        <a href="#acao" id="link-acao">Ação</a>
+        <a href="#dominacao" id="link-dominacao">Dominação</a>
+        <a href="#precos" id="link-precos">Preços</a>
+        <a href="#punicoes" id="link-punicoes">Punições</a>
+    </div>
+</nav>
+
+<div class="container">
+    
+    <div class="logo-container">
+        <img src="https://i.postimg.cc/jjYPc0cT/Logo_Central_240x104.png" alt="Logo Central" class="logo-img">
+    </div>
+
+    <div id="inicio" class="tab-content">
+        <h1>CENTRAL ROLEPLAY</h1>
+        <h2>Sua história começa aqui.</h2>
+        <div class="card" style="text-align: center;">
+            <p style="margin-bottom: 20px;">Bem-vindo ao portal oficial. Clique abaixo para entrar no nosso servidor:</p>
+            <a href="https://discord.gg/centralrp" target="_blank" class="btn btn-discord">Entrar no Discord</a>
+        </div>
+    </div>
+
+    <div id="regras" class="tab-content">
+        <h1>DIRETRIZES</h1>
+        <div class="card">
+            <h3 style="color: var(--primary);">📜 Regras Gerais</h3>
+            <p>Amor à Vida, Metagaming, Powergaming.</p>
+        </div>
+    </div>
+
+    <div id="acao" class="tab-content">
+        <h1>REGRAS DE AÇÃO</h1>
+        <div class="submenu">
+            <a onclick="openSubTab('acao-assalto-e-sequestro')" id="sublink-acao-assalto-e-sequestro">Assalto</a>
+            <a onclick="openSubTab('acao-banco-central')" id="sublink-acao-banco-central">Sequestro</a>
+        </div>
+        
+        <div id="acao-assalto-e-sequestro" class="subtab-content">
+            <div class="card">
+                <h3>📸 Assalto e Sequestro</h3>
+                <p>.</p>
+                <img src="https://i.imgur.com/YOUR_ASSALTO_LINK.png" alt="Foto Assalto" class="action-img">
+            </div>
+        </div>
+        
+        <div id="acao-banco-central" class="subtab-content">
+            <div class="card">
+                <h3>📸 Banco Central</h3>
+                <p>Ação permitida apenas com facção formada.</p>
+                <img src="https://i.imgur.com/YOUR_SEQUESTRO_LINK.png" alt="Foto BC" class="action-img">
+            </div>
+        </div>
+    </div>
+
+    <div id="dominacao" class="tab-content">
+        <h1>DOMINAÇÃO</h1>
+        <div class="submenu">
+            <a onclick="openSubTab('dom-armas')" id="sublink-dom-armas">ARMAS</a>
+            <a onclick="openSubTab('dom-municao')" id="sublink-dom-municao">MUNIÇÃO</a>
+            <a onclick="openSubTab('dom-trafico')" id="sublink-dom-trafico">TRÁFICO</a>
+            <a onclick="openSubTab('dom-guerra')" id="sublink-dom-guerra">GUERRA</a>
+            <a onclick="openSubTab('dom-br')" id="sublink-dom-br">BATTLE ROYALE</a>
+        </div>
+
+        <div id="dom-armas" class="subtab-content">
+            <div class="card">
+                <h3>🔫 Dominação de Armas</h3>
+                <p>Zona de alta periculosidade.</p>
+                <img src="https://i.imgur.com/YOUR_DOM_ARMAS.png" alt="Dom Armas" class="action-img">
+            </div>
+        </div>
+        <div id="dom-municao" class="subtab-content">
+            <div class="card">
+                <h3>📦 Dominação de Munição</h3>
+                <p>Fábrica de munições.</p>
+                <img src="https://i.imgur.com/YOUR_DOM_MUNICAO.png" alt="Dom Munição" class="action-img">
+            </div>
+        </div>
+        <div id="dom-trafico" class="subtab-content">
+            <div class="card">
+                <h3>🌿 Dominação de Tráfico</h3>
+                <p>Área de plantação.</p>
+                <img src="https://i.imgur.com/YOUR_DOM_TRAFICO.png" alt="Dom Tráfico" class="action-img">
+            </div>
+        </div>
+        <div id="dom-guerra" class="subtab-content">
+            <div class="card">
+                <h3>⚔️ Zona de Guerra</h3>
+                <p>Ação liberada 24/7.</p>
+                <img src="https://i.imgur.com/YOUR_DOM_GUERRA.png" alt="Dom Guerra" class="action-img">
+            </div>
+        </div>
+        <div id="dom-br" class="subtab-content">
+            <div class="card">
+                <h3>🔥 Battle Royale</h3>
+                <p>Evento semanal.</p>
+                <img src="https://i.imgur.com/YOUR_DOM_BR.png" alt="Dom BR" class="action-img">
+            </div>
+        </div>
+    </div>
+
+    <div id="precos" class="tab-content">
+        <h1>VALORES</h1>
+        <div class="submenu">
+            <a onclick="openSubTab('precos-ilegal')" id="sublink-precos-ilegal">ILEGAL</a>
+            <a onclick="openSubTab('precos-hospital')" id="sublink-precos-hospital">HOSPITAL</a>
+            <a onclick="openSubTab('precos-bombeiro')" id="sublink-precos-bombeiro">BOMBEIRO</a>
+            <a onclick="openSubTab('precos-mecanica')" id="sublink-precos-mecanica">MECÂNICA</a>
+            <a onclick="openSubTab('precos-judiciario')" id="sublink-precos-judiciario">JUDICIÁRIO</a>
+        </div>
+
+        <div id="precos-ilegal" class="subtab-content">
+            <div class="submenu">
+                <a onclick="openSubSubTab('armas')" id="subsublink-armas">ARMAS</a>
+                <a onclick="openSubSubTab('municao')" id="subsublink-municao">MUNIÇÃO</a>
+                <a onclick="openSubSubTab('trafico')" id="subsublink-trafico">TRÁFICO</a>
+            </div>
+
+            <div id="armas" class="subsubtab-content">
+                <h3>🔫 Armas</h3>
+                <table>
+                    <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Sócio</th><th>Normal</th></tr></thead>
+                    <tbody>
+                        <tr class="item-row" data-com="720000" data-sem="750000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Pistola</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 720k</td>
+                            <td>R$ 750k</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="municao" class="subsubtab-content">
+                <h3>📦 Munição</h3>
+                <table>
+                    <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Sócio</th><th>Normal</th></tr></thead>
+                    <tbody>
+                        <tr class="item-row" data-com="50000" data-sem="60000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Caixa 9mm</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 50k</td>
+                            <td>R$ 60k</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="trafico" class="subsubtab-content">
+                <h3>🌿 Tráfico</h3>
+                <table>
+                    <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Sócio</th><th>Normal</th></tr></thead>
+                    <tbody>
+                        <tr class="item-row" data-com="20000" data-sem="25000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Maconha</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 20k</td>
+                            <td>R$ 25k</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="precos-hospital" class="subtab-content">
+            <h3>🏥 Serviços Médicos</h3>
+            <img src="https://i.postimg.cc/FKbH01Dj/hp.png" alt="Hospital" class="action-img">
+            <table>
+                <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Sócio</th><th>Normal</th></tr></thead>
+                <tbody>
+                    <tr class="item-row" data-com="5000" data-sem="7000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Kit Médico</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 5k</td>
+                        <td>R$ 10k</td>
+                    </tr>
+                                        <tr class="item-row" data-com="5000" data-sem="7000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Bandagem</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 15k</td>
+                        <td>R$ 20k</td>
+                                            <tr class="item-row" data-com="5000" data-sem="7000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Elixir Vital</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 100k</td>
+                        <td>R$ 120k</td>
+                    </tr>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="precos-bombeiro" class="subtab-content">
+            <h3>🧯 Serviços de Bombeiro</h3>
+            <img src="https://i.postimg.cc/nLKhqM0K/cbm.png" alt="Bombeiro" class="action-img">
+            <table>
+                <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Sócio</th><th>Normal</th></tr></thead>
+                <tbody>
+                                        <tr class="item-row" data-com="5000" data-sem="7000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Bandagem</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 15k</td>
+                        <td>R$ 20k</td>
+                                            <tr class="item-row" data-com="5000" data-sem="7000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Adrenalina</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 100k</td>
+                        <td>R$ 120k</td>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="precos-mecanica" class="subtab-content">
+            <h3>🔧 Mecânica</h3>
+            <img src="https://i.postimg.cc/y8VQ7b2q/mec.png" alt="Mecanica" class="action-img">
+            <table>
+                <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Sócio</th><th>Normal</th></tr></thead>
+                <tbody>
+                    <tr class="item-row" data-com="10000" data-sem="15000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Reparo Motor</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 10k</td>
+                        <td>R$ 15k</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="precos-judiciario" class="subtab-content">
+            <h3>⚖️ Judiciário</h3>
+            <img src="https://i.postimg.cc/Lsk8jhN3/jud.png" alt="Judiciario" class="action-img">
+            <table>
+                <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Sócio</th><th>Normal</th></tr></thead>
+                <tbody>
+                    <tr class="item-row" data-com="50000" data-sem="50000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Advogado</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 50k</td>
+                        <td>R$ 50k</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="calculator-footer" id="calcFooter" style="display: none;">
+            <div class="calc-row"><span class="calc-label">Total Sócio:</span><span id="resTotalCom">R$ 0,00</span></div>
+            <div class="calc-row"><span class="calc-label">Total Normal:</span><span id="resTotalSem">R$ 0,00</span></div>
+        </div>
+    </div>
+
+    <div id="punicoes" class="tab-content">
+        <h1>SANCIONÁRIO</h1>
+        <div class="card">
+            <h3>Combat Log</h3>
+            <p style="color: var(--red);">Ban 7 Dias</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function handleRouting() {
+        let hash = window.location.hash || '#inicio';
+        
+        // --- 1. ABAS PRINCIPAIS ---
+        let content = document.getElementsByClassName("tab-content");
+        for (let i = 0; i < content.length; i++) content[i].classList.remove("active");
+        let links = document.querySelectorAll("nav a");
+        for (let i = 0; i < links.length; i++) links[i].classList.remove("active");
+        
+        let mainTabName = hash.split('-')[0].replace('#', '');
+        if(!document.getElementById(mainTabName)) mainTabName = 'inicio';
+        
+        document.getElementById(mainTabName).classList.add("active");
+        let mainLink = document.querySelector(`nav a[href="#${mainTabName}"]`);
+        if(mainLink) mainLink.classList.add("active");
+
+        // --- 2. SUBTAB HANDLING ---
+        // Reseta todas as subabas
+        let subContent = document.getElementsByClassName("subtab-content");
+        for (let i = 0; i < subContent.length; i++) subContent[i].classList.remove("active");
+        let subLinks = document.querySelectorAll(".submenu a");
+        for (let i = 0; i < subLinks.length; i++) subLinks[i].classList.remove("active");
+
+        if (hash.includes('-')) {
+            let subTabId = hash.replace('#', '');
+            let targetSub = document.getElementById(subTabId);
+            if(targetSub) {
+                targetSub.classList.add("active");
+                // Destaca o link
+                let targetLink = document.querySelector(`.submenu a[onclick*="${subTabId}"]`);
+                if(targetLink) targetLink.classList.add("active");
+            }
+        } else {
+            // Se não tiver subtab, ativa a primeira do submenu por padrão
+            let firstSubLink = document.querySelector(`#${mainTabName} .submenu a`);
+            if(firstSubLink) firstSubLink.click();
+        }
+
+        // --- 3. CALCULADORA FOOTER ---
+        document.getElementById('calcFooter').style.display = (mainTabName === 'precos') ? 'block' : 'none';
+        calcular();
+    }
+
+    // Funcionalidade para Subabas (Ação, Dominação e Preços)
+    function openSubTab(subTabId) {
+        // Reseta Subabas
+        let parentTabId = event.currentTarget.closest('.tab-content').id;
+
+        let contents = document.querySelectorAll(`#${parentTabId} .subtab-content`);
+        for (let i = 0; i < contents.length; i++) contents[i].classList.remove("active");
+        
+        let links = document.querySelectorAll(`#${parentTabId} .submenu a`);
+        for (let i = 0; i < links.length; i++) links[i].classList.remove("active");
+        
+        document.getElementById(subTabId).classList.add("active");
+        event.currentTarget.classList.add("active");
+        
+        // Se for Ilegal, reseta para sub-sub aba padrão
+        if(subTabId === 'precos-ilegal') openSubSubTab('armas');
+        
+        calcular();
+    }
+
+    // Funcionalidade específica para Ilegal (Sub-sub menu)
+    function openSubSubTab(subSubTabId) {
+        let contents = document.querySelectorAll(".subsubtab-content");
+        for (let i = 0; i < contents.length; i++) contents[i].classList.remove("active");
+        
+        let links = document.querySelectorAll("#precos-ilegal .submenu a");
+        for (let i = 0; i < links.length; i++) links[i].classList.remove("active");
+        
+        document.getElementById(subSubTabId).classList.add("active");
+        event.currentTarget.classList.add("active");
+        calcular();
+    }
+
+    function calcular() {
+        let totalCom = 0, totalSem = 0;
+        // Calcula apenas o que está visível
+        document.querySelectorAll('.active .item-row').forEach(row => {
+            if(row.querySelector('.sel').checked) {
+                let q = parseInt(row.querySelector('.qtd').value) || 0;
+                totalCom += q * parseInt(row.dataset.com);
+                totalSem += q * parseInt(row.dataset.sem);
+            }
+        });
+        document.getElementById('resTotalCom').innerText = totalCom.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+        document.getElementById('resTotalSem').innerText = totalSem.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+    }
+
+    window.addEventListener('hashchange', handleRouting);
+    document.addEventListener('input', function(e) {
+        if(e.target.classList.contains('sel') || e.target.classList.contains('qtd')) calcular();
+    });
+    
+    // Inicialização
+    if(!window.location.hash) window.location.hash = '#inicio';
+    handleRouting();
+</script>
+</body>
+</html>
