@@ -15,6 +15,9 @@
             --text-dim: #a0a0a0;
             --green: #22c55e;
             --red: #ef4444;
+            --yellow: #fffb00;
+            --blue: #1900ff;
+            --purple: #7700ff;
             --discord: #5865F2;
             --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -204,21 +207,152 @@
     <div id="acao" class="tab-content">
         <h1>REGRAS DE AÇÃO</h1>
         <div class="submenu">
-            <a onclick="openSubTab('acao-assalto-e-sequestro')" id="sublink-acao-assalto-e-sequestro">Assalto</a>
-            <a onclick="openSubTab('acao-banco-central')" id="sublink-acao-banco-central">Sequestro</a>
+            <a onclick="openSubTab('acao-assalto')" id="sublink-acao-assalto">Assalto</a>
+            <a onclick="openSubTab('acao-sequestro')" id="sublink-acao-assalto">Sequestro</a>
+            <a onclick="openSubTab('acao-banco-central')" id="sublink-acao-banco-central">Banco Central</a>
+            <a onclick="openSubTab('acao-banco-de-paleto')" id="sublink-acao-banco-de-paleto">Banco de Paleto</a>
+            <a onclick="openSubTab('acao-banco-pine')" id="sublink-acao-banco-pine">Banco Pine</a>
+            <a onclick="openSubTab('acao-niobio')" id="sublink-acao-niobio">Nióbio</a>
+            <a onclick="openSubTab('acao-acougue')" id="sublink-acao-acougue">Açougue</a>
+            <a onclick="openSubTab('acao-galinheiro')" id="sublink-acao-galinheiro">Galinheiro</a>
+            <a onclick="openSubTab('acao-faculdade')" id="sublink-acao-faculdade">Faculdade</a>
+            <a onclick="openSubTab('acao-ammunation')" id="sublink-acao-ammunation">Ammunation</a>
+            <a onclick="openSubTab('acao-joalheria')" id="sublink-acao-joalheria">Joalheria</a>
         </div>
         
-        <div id="acao-assalto-e-sequestro" class="subtab-content">
+        <div id="acao-assalto" class="subtab-content">
             <div class="card">
-                <h3>📸 Assalto e Sequestro</h3>
-                <p>.</p>
-                <img src="https://i.imgur.com/YOUR_ASSALTO_LINK.png" alt="Foto Assalto" class="action-img">
+                <h3>📸 Horários na cidade:</h3>
+                <p> Norte: 07:00 até 13:00</p>
+                <p> Ilha Marine: 00:00 até 05:00</p>
+            </div>
+            <div class="card">
+                <h3>📸 Regras geral</h3>
+                <p style="color: var(--red);">🚫 Proibido call externa(metagaming).</p>
+            </div>
+            <div class="card">
+                <h3>🦹 Regras Bandido</h3>
+                <p style="color: var(--yellow);">⚠️ É extremamente necessário o voip estar ligado no máximo.</p>
+                <p style="color: var(--green);">✅ Permitido apenas 2 veículos juntos para realizar do assalto.</p>
+                <p style="color: var(--green);">✅ Permitido máximo de 4 pessoas por carro.</p>
+                <p style="color: var(--green);">✅ Permitido máximo de 2 pessoas por moto.</p>
+                <p style="color: var(--green);">✅ Permitido solicitar QRR.</p>
+                <p style="color: var(--green);">✅ Permitido assaltantes de facções diferentes realizar a ação juntos.</p>
+                <p style="color: var(--red);">🚫 Proibido QRR colado(no mínimo uma quadra de distância).</p>
+                <p style="color: var(--red);">🚫 Proibido matar sem dá voz de assalto.</p>
+                <p style="color: var(--red);">🚫 Proibido assaltantes no porta-malas do veículo.</p>
+            </div>
+            <div class="card">
+                <h3>📸 Regras Vítima</h3>
+                <p style="color: var(--yellow);">⚠️ Não é necessário o voip estar ligado, mas precisa ser avisado que está sem voz no /me.</p>
+                <p style="color: var(--red);">🚫 Proibido anti-amor à vida.</p>
+                <p style="color: var(--red);">🚫 Proibido fuga para área safe.</p>
+            </div>
+        </div>
+        
+        <div id="acao-sequestro" class="subtab-content">
+            <div class="card">
+                <h3>📸 Sequestro</h3>
+                <p> Horários na cidade:
+                     20:00 até 00:00</p>
+            </div>
+            <div class="card">
+                <h3>📸 Regras geral</h3>
+                <p style="color: var(--yellow);">⚠️ Tempo máximo do sequestro: 60 minutos.</p>
+                <p style="color: var(--red);">🚫 Proibido call externa(metagaming).</p>
+            </div>
+            <div class="card">
+                <h3>🦹 Regras Bandido</h3>
+            <p style="color: var(--yellow);">⚠️ É extremamente necessário o voip estar ligado no máximo.</p>
+            <p style="color: var(--green);">✅ Permitido levantar o morto com adrenalina para sequestrar.</p>
+            <p style="color: var(--green);">✅ Permitido remover da vítima viva somente rádio, celular e arma(não inclui munição).</p>
+            <p style="color: var(--green);">✅ O valor máximo permitido para o resgate é de 5.000.000(se for cargo alto de sua organização ou facçção).</p>
+            <p style="color: var(--red);">🚫 Proibido sequestrar sem os itens algemas e capuz.</p>
+            <p style="color: var(--red);">🚫 Proibido sequestrar morto.</p>
+            <p style="color: var(--red);">🚫 Proibido sequestrar dentro de Orgãos Públicos e Área Safe.</p>
+            <p style="color: var(--red);">🚫 Proibido matar a vítima se ela estiver colaborando.</p>
+            <p style="color: var(--red);">🚫 Proibido matar somente para saquear os itens da vitima.</p>
+            <p style="color: var(--red);">🚫 Proibido anti-amor à vida.</p>
+            <p style="color: var(--red);">🚫 Proibido call externa(metagaming).</p>
+            </div>
+            <div class="card">
+                <h3>📸 Regras Vítima</h3>
+                <p style="color: var(--yellow);">⚠️ Não é necessário o voip estar ligado, mas precisa ser avisado que está sem voz no /me.</p>
+                <p style="color: var(--yellow);">⚠️ É extremamente necessário colaborar com o sequestro, Em qualquer ação o refém deve sempre seguir a história que está ocorrendo no momento e preservar por sua vida. Policiais devem sempre fazer o máximo para resgatá-los com vida.</p>
+                <p style="color: var(--red);">🚫 Proibido anti-amor à vida(ficar pedindo para ser morto, xingando os bandidos e etc).</p>
             </div>
         </div>
         
         <div id="acao-banco-central" class="subtab-content">
             <div class="card">
                 <h3>📸 Banco Central</h3>
+                <p>Ação permitida apenas com facção formada.</p>
+                <img src="https://i.imgur.com/YOUR_SEQUESTRO_LINK.png" alt="Foto BC" class="action-img">
+            </div>
+        </div>
+        
+        <div id="acao-banco-de-paleto" class="subtab-content">
+            <div class="card">
+                <h3>📸 Banco de Paleto</h3>
+                <p>Ação permitida apenas com facção formada.</p>
+                <img src="https://i.imgur.com/YOUR_SEQUESTRO_LINK.png" alt="Foto BC" class="action-img">
+            </div>
+        </div>
+        
+        <div id="acao-banco-pine" class="subtab-content">
+            <div class="card">
+                <h3>📸 Banco Pine</h3>
+                <p>Ação permitida apenas com facção formada.</p>
+                <img src="https://i.imgur.com/YOUR_SEQUESTRO_LINK.png" alt="Foto BC" class="action-img">
+            </div>
+        </div>
+        
+        <div id="acao-niobio" class="subtab-content">
+            <div class="card">
+                <h3>📸 Nióbio</h3>
+                <p>Ação permitida apenas com facção formada.</p>
+                <img src="https://i.imgur.com/YOUR_SEQUESTRO_LINK.png" alt="Foto BC" class="action-img">
+
+                <h3>📸 Nióbio</h3>
+                <p>Ação permitida apenas com facção formada.</p>
+            </div>
+        </div>
+        
+        <div id="acao-acougue" class="subtab-content">
+            <div class="card">
+                <h3>📸 Açougue</h3>
+                <p>Ação permitida apenas com facção formada.</p>
+                <img src="https://i.imgur.com/YOUR_SEQUESTRO_LINK.png" alt="Foto BC" class="action-img">
+            </div>
+        </div>
+        
+        <div id="acao-galinheiro" class="subtab-content">
+            <div class="card">
+                <h3>📸 Galinheiro</h3>
+                <p>Ação permitida apenas com facção formada.</p>
+                <img src="https://i.imgur.com/YOUR_SEQUESTRO_LINK.png" alt="Foto BC" class="action-img">
+            </div>
+        </div>
+        
+        <div id="acao-faculdade" class="subtab-content">
+            <div class="card">
+                <h3>📸 Faculdade</h3>
+                <p>Ação permitida apenas com facção formada.</p>
+                <img src="https://i.imgur.com/YOUR_SEQUESTRO_LINK.png" alt="Foto BC" class="action-img">
+            </div>
+        </div>
+        
+        <div id="acao-joalheria" class="subtab-content">
+            <div class="card">
+                <h3>📸 Joalheria</h3>
+                <p>Ação permitida apenas com facção formada.</p>
+                <img src="https://i.imgur.com/YOUR_SEQUESTRO_LINK.png" alt="Foto BC" class="action-img">
+            </div>
+        </div>
+        
+        <div id="acao-ammunation" class="subtab-content">
+            <div class="card">
+                <h3>📸 Ammunation</h3>
                 <p>Ação permitida apenas com facção formada.</p>
                 <img src="https://i.imgur.com/YOUR_SEQUESTRO_LINK.png" alt="Foto BC" class="action-img">
             </div>
@@ -280,6 +414,7 @@
             <a onclick="openSubTab('precos-bombeiro')" id="sublink-precos-bombeiro">BOMBEIRO</a>
             <a onclick="openSubTab('precos-mecanica')" id="sublink-precos-mecanica">MECÂNICA</a>
             <a onclick="openSubTab('precos-judiciario')" id="sublink-precos-judiciario">JUDICIÁRIO</a>
+            <a onclick="openSubTab('precos-kids')" id="sublink-precos-kids">KIDS</a>
         </div>
 
         <div id="precos-ilegal" class="subtab-content">
@@ -292,14 +427,49 @@
             <div id="armas" class="subsubtab-content">
                 <h3>🔫 Armas</h3>
                 <table>
-                    <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Sócio</th><th>Normal</th></tr></thead>
+                    <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Mínimo</th><th>Máximo</th></tr></thead>
                     <tbody>
-                        <tr class="item-row" data-com="720000" data-sem="750000">
+                        <tr class="item-row" data-com="150000" data-sem="175000">
                             <td><input type="checkbox" class="sel"></td>
-                            <td><strong>Pistola</strong></td>
+                            <td><strong>Five</strong></td>
                             <td><input type="number" class="qtd" value="1" min="1"></td>
-                            <td>R$ 720k</td>
-                            <td>R$ 750k</td>
+                            <td>R$ 150.000</td>
+                            <td>R$ 175.000</td>
+                        </tr>
+                        <tr class="item-row" data-com="200000" data-sem="225000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Tec-9</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 200.000</td>
+                            <td>R$ 225.000</td>
+                        </tr>
+                        <tr class="item-row" data-com="300000" data-sem="325000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Aug</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 300.000</td>
+                            <td>R$ 325.000</td>
+                        </tr>
+                        <tr class="item-row" data-com="350000" data-sem="375000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Ak mk2</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 350.000</td>
+                            <td>R$ 375.000</td>
+                        </tr>
+                        <tr class="item-row" data-com="450000" data-sem="500000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Ar-15</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 450.000</td>
+                            <td>R$ 500.000</td>
+                        </tr>
+                        <tr class="item-row" data-com="550000" data-sem="650000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>G-36</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 550.000</td>
+                            <td>R$ 650.000</td>
                         </tr>
                     </tbody>
                 </table>
@@ -308,14 +478,45 @@
             <div id="municao" class="subsubtab-content">
                 <h3>📦 Munição</h3>
                 <table>
-                    <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Sócio</th><th>Normal</th></tr></thead>
+                    <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Mínimo</th><th>Máximo</th></tr></thead>
                     <tbody>
-                        <tr class="item-row" data-com="50000" data-sem="60000">
+                        <tr class="item-row" data-com="1000" data-sem="1500">
                             <td><input type="checkbox" class="sel"></td>
-                            <td><strong>Caixa 9mm</strong></td>
+                            <td><strong>Munição de Pistola</strong></td>
                             <td><input type="number" class="qtd" value="1" min="1"></td>
-                            <td>R$ 50k</td>
-                            <td>R$ 60k</td>
+                            <td>R$ 1.000</td>
+                            <td>R$ 1.500</td>
+                        </tr>
+                            <tr class="item-row" data-com="2000" data-sem="2500">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Munição de Sub</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 2.000</td>
+                            <td>R$ 2.500</td>
+                        </tr>
+                        </tr>
+                            <tr class="item-row" data-com="4000" data-sem="4500">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Munição de Fuzil</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 4.000</td>
+                            <td>R$ 4.500</td>
+                        </tr>
+                        </tr>
+                            <tr class="item-row" data-com="120000" data-sem="150000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Colete</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 120.000</td>
+                            <td>R$ 150.000</td>
+                        </tr>
+                        </tr>
+                            <tr class="item-row" data-com="200000" data-sem="250000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Colete Premium</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 200.000</td>
+                            <td>R$ 250.000</td>
                         </tr>
                     </tbody>
                 </table>
@@ -324,14 +525,105 @@
             <div id="trafico" class="subsubtab-content">
                 <h3>🌿 Tráfico</h3>
                 <table>
-                    <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Sócio</th><th>Normal</th></tr></thead>
+                    <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Mínimo</th><th>Máximo</th></tr></thead>
                     <tbody>
-                        <tr class="item-row" data-com="20000" data-sem="25000">
+                        <tr class="item-row" data-com="2000" data-sem="3000">
                             <td><input type="checkbox" class="sel"></td>
                             <td><strong>Maconha</strong></td>
                             <td><input type="number" class="qtd" value="1" min="1"></td>
-                            <td>R$ 20k</td>
-                            <td>R$ 25k</td>
+                            <td>R$ 2.000</td>
+                            <td>R$ 3.000</td>
+                        </tr>
+                        <tr class="item-row" data-com="2000" data-sem="3000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Cocaína</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 2.000</td>
+                            <td>R$ 3.000</td>
+                        </tr>
+                        <tr class="item-row" data-com="2000" data-sem="3000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Ecstasy</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 2.000</td>
+                            <td>R$ 3.000</td>
+                        </tr>
+                        <tr class="item-row" data-com="2000" data-sem="3000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Cristal Azul</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 2.000</td>
+                            <td>R$ 3.000</td>
+                        </tr>
+                        <tr class="item-row" data-com="2000" data-sem="3000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Lsd</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 2.000</td>
+                            <td>R$ 3.000</td>
+                        </tr>
+                        <tr class="item-row" data-com="2000" data-sem="3000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Ópio</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 2.000</td>
+                            <td>R$ 3.000</td>
+                        </tr>
+                        <tr class="item-row" data-com="2000" data-sem="3000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Heroína</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 2.000</td>
+                            <td>R$ 3.000</td>
+                        </tr>
+                        <tr class="item-row" data-com="2000" data-sem="3000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Skunk</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 2.000</td>
+                            <td>R$ 3.000</td>
+                        </tr>
+                        <tr class="item-row" data-com="8000" data-sem="12000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Coquetel</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 8.000</td>
+                            <td>R$ 12.000</td>
+                        </tr>
+                        <tr class="item-row" data-com="40000" data-sem="50000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>C4</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 40.000</td>
+                            <td>R$ 50.000</td>
+                        </tr>
+                        <tr class="item-row" data-com="60000" data-sem="70000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Lockpick</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 60.000</td>
+                            <td>R$ 70.000</td>
+                        </tr>
+                        <tr class="item-row" data-com="1200000" data-sem="1500000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Masterpick</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 1.200.000</td>
+                            <td>R$ 1.500.000</td>
+                        </tr>
+                        <tr class="item-row" data-com="100000" data-sem="120000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Mochila X</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 100.000</td>
+                            <td>R$ 120.000</td>
+                        </tr>
+                        <tr class="item-row" data-com="00.25" data-sem="00.4">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Desmanche</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 25%</td>
+                            <td>R$ 40%</td>
                         </tr>
                     </tbody>
                 </table>
@@ -342,27 +634,27 @@
             <h3>🏥 Serviços Médicos</h3>
             <img src="https://i.postimg.cc/FKbH01Dj/hp.png" alt="Hospital" class="action-img">
             <table>
-                <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Sócio</th><th>Normal</th></tr></thead>
+                <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Mínimo</th><th>Máximo</th></tr></thead>
                 <tbody>
-                    <tr class="item-row" data-com="5000" data-sem="7000">
+                    <tr class="item-row" data-com="10000" data-sem="20000">
                         <td><input type="checkbox" class="sel"></td>
                         <td><strong>Kit Médico</strong></td>
                         <td><input type="number" class="qtd" value="1" min="1"></td>
-                        <td>R$ 5k</td>
-                        <td>R$ 10k</td>
+                        <td>R$ 10.000</td>
+                        <td>R$ 20.000</td>
                     </tr>
-                                        <tr class="item-row" data-com="5000" data-sem="7000">
+                    <tr class="item-row" data-com="30000" data-sem="40000">
                         <td><input type="checkbox" class="sel"></td>
                         <td><strong>Bandagem</strong></td>
                         <td><input type="number" class="qtd" value="1" min="1"></td>
-                        <td>R$ 15k</td>
-                        <td>R$ 20k</td>
-                                            <tr class="item-row" data-com="5000" data-sem="7000">
+                        <td>R$ 30.000</td>
+                        <td>R$ 40.000</td>
+                    <tr class="item-row" data-com="130000" data-sem="150000">
                         <td><input type="checkbox" class="sel"></td>
                         <td><strong>Elixir Vital</strong></td>
                         <td><input type="number" class="qtd" value="1" min="1"></td>
-                        <td>R$ 100k</td>
-                        <td>R$ 120k</td>
+                        <td>R$ 130.000</td>
+                        <td>R$ 150.000</td>
                     </tr>
                     </tr>
                 </tbody>
@@ -373,61 +665,531 @@
             <h3>🧯 Serviços de Bombeiro</h3>
             <img src="https://i.postimg.cc/nLKhqM0K/cbm.png" alt="Bombeiro" class="action-img">
             <table>
-                <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Sócio</th><th>Normal</th></tr></thead>
+                <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Mínimo</th><th>Máximo</th></tr></thead>
                 <tbody>
-                                        <tr class="item-row" data-com="5000" data-sem="7000">
+                        <tr class="item-row" data-com="30000" data-sem="40000">
                         <td><input type="checkbox" class="sel"></td>
                         <td><strong>Bandagem</strong></td>
                         <td><input type="number" class="qtd" value="1" min="1"></td>
-                        <td>R$ 15k</td>
-                        <td>R$ 20k</td>
-                                            <tr class="item-row" data-com="5000" data-sem="7000">
+                        <td>R$ 30.000</td>
+                        <td>R$ 40.000</td>
+                                            <tr class="item-row" data-com="130000" data-sem="150000">
                         <td><input type="checkbox" class="sel"></td>
                         <td><strong>Adrenalina</strong></td>
                         <td><input type="number" class="qtd" value="1" min="1"></td>
-                        <td>R$ 100k</td>
-                        <td>R$ 120k</td>
+                        <td>R$ 130.000</td>
+                        <td>R$ 150.000</td>
                 </tbody>
             </table>
         </div>
 
         <div id="precos-mecanica" class="subtab-content">
-            <h3>🔧 Mecânica</h3>
-            <img src="https://i.postimg.cc/y8VQ7b2q/mec.png" alt="Mecanica" class="action-img">
-            <table>
-                <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Sócio</th><th>Normal</th></tr></thead>
-                <tbody>
-                    <tr class="item-row" data-com="10000" data-sem="15000">
+            <div class="submenu">
+                <a onclick="openSubSubTab('servico')" id="subsublink-trafico">SERVIÇO & ITENS</a>
+                <a onclick="openSubSubTab('personalizacao')" id="subsublink-personalizacao">PERSONALIZAÇÃO</a>
+                <a onclick="openSubSubTab('suspensao')" id="subsublink-suspensao">SUSPENSÃO</a>
+                <a onclick="openSubSubTab('motor')" id="subsublink-trafico">MOTOR</a>
+                <a onclick="openSubSubTab('transmissao')" id="subsublink-trafico">TRANSMISSÃO</a>
+                <a onclick="openSubSubTab('freio')" id="subsublink-trafico">FREIO</a>
+                <a onclick="openSubSubTab('blindagem')" id="subsublink-trafico">BLINDAGEM LATARIA</a>
+                <a onclick="openSubSubTab('turbo')" id="subsublink-trafico">TURBO</a>
+            </div>
+
+            <div id="personalizacao" class="subsubtab-content">
+                <h3>🛠️ PERSONALIZAÇÃO</h3>
+                <table>
+                    <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Mínimo</th><th>Máximo</th></tr></thead>
+                    <tbody>
+                    <img src="https://i.postimg.cc/y8VQ7b2q/mec.png" alt="Mecanica" class="action-img">
+                    <tr class="item-row" data-com="50000" data-sem="50000">
                         <td><input type="checkbox" class="sel"></td>
-                        <td><strong>Reparo Motor</strong></td>
+                        <td><strong>Aerofólio</strong></td>
                         <td><input type="number" class="qtd" value="1" min="1"></td>
-                        <td>R$ 10k</td>
-                        <td>R$ 15k</td>
+                        <td>R$ 50.000</td>
+                        <td>R$ 50.000</td>
                     </tr>
-                </tbody>
-            </table>
+                    <tr class="item-row" data-com="50000" data-sem="50000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Pára-choque dianteiro</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 50.000</td>
+                        <td>R$ 50.000</td>
+                    </tr>
+                    <tr class="item-row" data-com="50000" data-sem="50000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Pára-choque traseiro</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 50.000</td>
+                        <td>R$ 50.000</td>
+                    </tr>
+                    <tr class="item-row" data-com="50000" data-sem="50000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Saias</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 50.000</td>
+                        <td>R$ 50.000</td>
+                    </tr>
+                    <tr class="item-row" data-com="50000" data-sem="50000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Escapamento</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 50.000</td>
+                        <td>R$ 50.000</td>
+                    </tr>
+                    <tr class="item-row" data-com="50000" data-sem="50000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Capô</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 50.000</td>
+                        <td>R$ 50.000</td>
+                    </tr>
+                    <tr class="item-row" data-com="50000" data-sem="50000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Gaiola</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 50.000</td>
+                        <td>R$ 50.000</td>
+                    </tr>
+                    <tr class="item-row" data-com="50000" data-sem="50000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Teto</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 50.000</td>
+                        <td>R$ 50.000</td>
+                    </tr>
+                    <tr class="item-row" data-com="50000" data-sem="50000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Paralama</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 50.000</td>
+                        <td>R$ 50.000</td>
+                    </tr>
+                    <tr class="item-row" data-com="50000" data-sem="50000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Pintura</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 50.000</td>
+                        <td>R$ 50.000</td>
+                    </tr>
+                    <tr class="item-row" data-com="50000" data-sem="50000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Pneus</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 50.000</td>
+                        <td>R$ 50.000</td>
+                    </tr>
+                    <tr class="item-row" data-com="50000" data-sem="50000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Buzina</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 50.000</td>
+                        <td>R$ 50.000</td>
+                    </tr>
+                    <tr class="item-row" data-com="50000" data-sem="50000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Capa de farol</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 50.000</td>
+                        <td>R$ 50.000</td>
+                    </tr>
+                    <tr class="item-row" data-com="50000" data-sem="50000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Chassi/Portas</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 50.000</td>
+                        <td>R$ 50.000</td>
+                    </tr>
+                    <tr class="item-row" data-com="50000" data-sem="50000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Adesivo</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 50.000</td>
+                        <td>R$ 50.000</td>
+                    </tr>
+                    <tr class="item-row" data-com="50000" data-sem="50000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Painel</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 50.000</td>
+                        <td>R$ 50.000</td>
+                    </tr>
+                    <tr class="item-row" data-com="50000" data-sem="50000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Ponteiros</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 50.000</td>
+                        <td>R$ 50.000</td>
+                    </tr>
+                    <tr class="item-row" data-com="50000" data-sem="50000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Janela</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 50.000</td>
+                        <td>R$ 50.000</td>
+                    </tr>
+                    <tr class="item-row" data-com="50000" data-sem="50000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Banco</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 50.000</td>
+                        <td>R$ 50.000</td>
+                    </tr>
+                    <tr class="item-row" data-com="50000" data-sem="50000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Adesivo Atomic</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 50.000</td>
+                        <td>R$ 50.000</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="suspensao" class="subsubtab-content">
+                <h3>🛠️ SUSPENSÃO</h3>
+                <table>
+                    <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Mínimo</th><th>Máximo</th></tr></thead>
+                    <tbody>
+                        <tr class="item-row" data-com="90000" data-sem="90000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Nivel 1</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 90.000</td>
+                            <td>R$ 90.000</td>
+                        </tr>
+                            <tr class="item-row" data-com="100000" data-sem="100000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Nivel 2</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 100.000</td>
+                            <td>R$ 100.000</td>
+                        </tr>
+                        </tr>
+                            <tr class="item-row" data-com="110000" data-sem="110000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Nivel 3</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 110.000</td>
+                            <td>R$ 110.000</td>
+                        </tr>
+                        </tr>
+                            <tr class="item-row" data-com="130000" data-sem="130000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Nivel 4</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 130.000</td>
+                            <td>R$ 130.000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="motor" class="subsubtab-content">
+                <h3>🛠️ MOTOR</h3>
+                <table>
+                    <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Mínimo</th><th>Máximo</th></tr></thead>
+                    <tbody>
+                        <tr class="item-row" data-com="90000" data-sem="90000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Nivel 1</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 90.000</td>
+                            <td>R$ 90.000</td>
+                        </tr>
+                            <tr class="item-row" data-com="100000" data-sem="100000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Nivel 2</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 100.000</td>
+                            <td>R$ 100.000</td>
+                        </tr>
+                        </tr>
+                            <tr class="item-row" data-com="110000" data-sem="110000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Nivel 3</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 110.000</td>
+                            <td>R$ 110.000</td>
+                        </tr>
+                        </tr>
+                            <tr class="item-row" data-com="130000" data-sem="130000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Nivel 4</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 130.000</td>
+                            <td>R$ 130.000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="transmissao" class="subsubtab-content">
+                <h3>🛠️ TRANSMISSÃO</h3>
+                <table>
+                    <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Mínimo</th><th>Máximo</th></tr></thead>
+                    <tbody>
+                        <tr class="item-row" data-com="90000" data-sem="90000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Nivel 1</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 90.000</td>
+                            <td>R$ 90.000</td>
+                        </tr>
+                            <tr class="item-row" data-com="100000" data-sem="100000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Nivel 2</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 100.000</td>
+                            <td>R$ 100.000</td>
+                        </tr>
+                        </tr>
+                            <tr class="item-row" data-com="110000" data-sem="110000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Nivel 3</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 110.000</td>
+                            <td>R$ 110.000</td>
+                        </tr>
+                        </tr>
+                            <tr class="item-row" data-com="120000" data-sem="120000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Nivel 4</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 120.000</td>
+                            <td>R$ 120.000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="freio" class="subsubtab-content">
+                <h3>🛠️ FREIO</h3>
+                <table>
+                    <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Mínimo</th><th>Máximo</th></tr></thead>
+                    <tbody>
+                        <tr class="item-row" data-com="80000" data-sem="80000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Nivel 1</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 80.000</td>
+                            <td>R$ 80.000</td>
+                        </tr>
+                            <tr class="item-row" data-com="100000" data-sem="100000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Nivel 2</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 100.000</td>
+                            <td>R$ 100.000</td>
+                        </tr>
+                        </tr>
+                            <tr class="item-row" data-com="110000" data-sem="110000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Nivel 3</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 110.000</td>
+                            <td>R$ 110.000</td>
+                        </tr>
+                        </tr>
+                            <tr class="item-row" data-com="120000" data-sem="120000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Nivel 4</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 120.000</td>
+                            <td>R$ 120.000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="blindagem" class="subsubtab-content">
+                <h3>🛠️ BLINDAGEM LATARIA</h3>
+                <table>
+                    <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Mínimo</th><th>Máximo</th></tr></thead>
+                    <tbody>
+                        <tr class="item-row" data-com="1000000" data-sem="1000000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Nivel 1</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 1.000.000</td>
+                            <td>R$ 1.000.000</td>
+                        </tr>
+                            <tr class="item-row" data-com="2000000" data-sem="2000000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Nivel 2</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 2.000.000</td>
+                            <td>R$ 2.000.000</td>
+                        </tr>
+                        </tr>
+                            <tr class="item-row" data-com="3000000" data-sem="3000000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Nivel 3</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 3.000.000</td>
+                            <td>R$ 3.000.000</td>
+                        </tr>
+                        </tr>
+                            <tr class="item-row" data-com="4000000" data-sem="4000000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Nivel 4</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 4.000.000</td>
+                            <td>R$ 4.000.000</td>
+                        </tr>
+                        </tr>
+                            <tr class="item-row" data-com="5000000" data-sem="5000000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Nivel 5</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 5.000.000</td>
+                            <td>R$ 5.000.000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="turbo" class="subsubtab-content">
+                <h3>🛠️ TURBO</h3>
+                <table>
+                    <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Mínimo</th><th>Máximo</th></tr></thead>
+                    <tbody>
+                        <tr class="item-row" data-com="1500000" data-sem="1500000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Kit Nitro</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 1.500.000</td>
+                            <td>R$ 1.500.000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="servico" class="subsubtab-content">
+                <h3>🛠️ SERVIÇO & ITENS</h3>
+                <table>
+                    <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Mínimo</th><th>Máximo</th></tr></thead>
+                    <tbody>
+                        <tr class="item-row" data-com="20000" data-sem="20000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Reparar Motor</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 20.000</td>
+                            <td>R$ 20.000</td>
+                        </tr>
+                            <tr class="item-row" data-com="2000" data-sem="2500">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Kit Reparo</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 20.000</td>
+                            <td>R$ 25.000</td>
+                        </tr>
+                        </tr>
+                            <tr class="item-row" data-com="500000" data-sem="550000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Garrafa Nitro</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 500.000</td>
+                            <td>R$ 550.000</td>
+                        </tr>
+                            <tr class="item-row" data-com="1500000" data-sem="2000000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Baú 500kg</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 1.500.000</td>
+                            <td>R$ 2.000.000</td>
+                        </tr>
+                            <tr class="item-row" data-com="3000000" data-sem="4000000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Baú 1000kg</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 3.000.000</td>
+                            <td>R$ 4.000.000</td>
+                        </tr>
+                        </tr>
+                            <tr class="item-row" data-com="5000000" data-sem="6000000">
+                            <td><input type="checkbox" class="sel"></td>
+                            <td><strong>Baú 1500kg</strong></td>
+                            <td><input type="number" class="qtd" value="1" min="1"></td>
+                            <td>R$ 5.000.000</td>
+                            <td>R$ 6.000.000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div id="precos-judiciario" class="subtab-content">
             <h3>⚖️ Judiciário</h3>
             <img src="https://i.postimg.cc/Lsk8jhN3/jud.png" alt="Judiciario" class="action-img">
             <table>
-                <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Sócio</th><th>Normal</th></tr></thead>
+                <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Mínimo</th><th>Máximo</th></tr></thead>
                 <tbody>
                     <tr class="item-row" data-com="50000" data-sem="50000">
                         <td><input type="checkbox" class="sel"></td>
                         <td><strong>Advogado</strong></td>
                         <td><input type="number" class="qtd" value="1" min="1"></td>
-                        <td>R$ 50k</td>
-                        <td>R$ 50k</td>
+                        <td>R$ 50.000</td>
+                        <td>R$ 50.000</td>
+                    </tr>
+                    <tr class="item-row" data-com="50000" data-sem="300000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Redução de Pena ou Liberdade</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 50.000</td>
+                        <td>R$ 300.000</td>
+                    </tr>
+                    <tr class="item-row" data-com="1500000" data-sem="2000000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Adoção</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 1.500.000</td>
+                        <td>R$ 2.000.000</td>
+                    </tr>
+                    <tr class="item-row" data-com="2500000" data-sem="3000000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Casamento</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 2.500.000</td>
+                        <td>R$ 3.000.000</td>
+                    </tr>
+                    <tr class="item-row" data-com="4500000" data-sem="5000000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Divórcio</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 4.500.000</td>
+                        <td>R$ 5.000.000</td>
+                    </tr>
+                    <tr class="item-row" data-com="8000000" data-sem="10000000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Alteração de Nome</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 8.000.000</td>
+                        <td>R$ 10.000.000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="precos-kids" class="subtab-content">
+            <h3>🍼 Kids</h3>
+            <img src="https://i.postimg.cc/Lsk8jhN3/jud.png" alt="Kids" class="action-img">
+            <table>
+                <thead><tr><th></th><th>Item</th><th>Qtd</th><th>Mínimo</th><th>Máximo</th></tr></thead>
+                <tbody>
+                    <tr class="item-row" data-com="100000" data-sem="120000">
+                        <td><input type="checkbox" class="sel"></td>
+                        <td><strong>Mamadeira</strong></td>
+                        <td><input type="number" class="qtd" value="1" min="1"></td>
+                        <td>R$ 100.000</td>
+                        <td>R$ 120.000</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
         <div class="calculator-footer" id="calcFooter" style="display: none;">
-            <div class="calc-row"><span class="calc-label">Total Sócio:</span><span id="resTotalCom">R$ 0,00</span></div>
-            <div class="calc-row"><span class="calc-label">Total Normal:</span><span id="resTotalSem">R$ 0,00</span></div>
+            <div class="calc-row"><span class="calc-label">Total Mínimo:</span><span id="resTotalCom">R$ 0,00</span></div>
+            <div class="calc-row"><span class="calc-label">Total Máximo:</span><span id="resTotalSem">R$ 0,00</span></div>
         </div>
     </div>
 
@@ -500,7 +1262,7 @@
         
         // Se for Ilegal, reseta para sub-sub aba padrão
         if(subTabId === 'precos-ilegal') openSubSubTab('armas');
-        
+
         calcular();
     }
 
@@ -511,11 +1273,13 @@
         
         let links = document.querySelectorAll("#precos-ilegal .submenu a");
         for (let i = 0; i < links.length; i++) links[i].classList.remove("active");
-        
+
         document.getElementById(subSubTabId).classList.add("active");
         event.currentTarget.classList.add("active");
         calcular();
+
     }
+
 
     function calcular() {
         let totalCom = 0, totalSem = 0;
