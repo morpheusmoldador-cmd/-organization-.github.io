@@ -2094,48 +2094,35 @@
     }
 
     // Funcionalidade para Subabas (Ação, Dominação e Preços)
-    function openSubSubTab(subSubTabId) {
-    // 1. Localiza o container pai para não desmarcar abas de outros setores
-    let container = event.currentTarget.closest('.tab-content');
-
-    // 2. Remove 'active' de todos os conteúdos de sub-aba dentro desse setor
-    let subContents = container.querySelectorAll(".submenu-content");
-    for (let i = 0; i < subContents.length; i++) subContents[i].classList.remove("active");
-
-    // 3. Remove 'active' de todos os botões do menu lateral/sub-menu
-    let links = container.querySelectorAll(".submenu a");
-    for (let i = 0; i < links.length; i++) links[i].classList.remove("active");
-
-    // 4. Adiciona 'active' apenas ao que foi clicado
-    document.getElementById(subSubTabId).classList.add("active");
-    event.currentTarget.classList.add("active");
-
-    calcular();
-    }
-
-    // Funcionalidade específica para Ilegal (Sub-sub menu)
-        function openSubTab(subTabId) {
-
+    function openSubTab(subTabId) {
         // Reseta Subabas
-
         let parentTabId = event.currentTarget.closest('.tab-content').id;
 
         let contents = document.querySelectorAll(`#${parentTabId} .subtab-content`);
-
         for (let i = 0; i < contents.length; i++) contents[i].classList.remove("active");
-
+        
         let links = document.querySelectorAll(`#${parentTabId} .submenu a`);
-
         for (let i = 0; i < links.length; i++) links[i].classList.remove("active");
-
+        
         document.getElementById(subTabId).classList.add("active");
-
         event.currentTarget.classList.add("active");
-
+        
         // Se for Ilegal, reseta para sub-sub aba padrão
-
         if(subTabId === 'precos-ilegal') openSubSubTab('armas');
 
+        calcular();
+    }
+
+    // Funcionalidade específica para Ilegal (Sub-sub menu)
+    function openSubSubTab(subSubTabId) {
+        let contents = document.querySelectorAll(".subsubtab-content");
+        for (let i = 0; i < contents.length; i++) contents[i].classList.remove("active");
+        
+        let links = document.querySelectorAll("#precos-ilegal .submenu a");
+        for (let i = 0; i < links.length; i++) links[i].classList.remove("active");
+
+        document.getElementById(subSubTabId).classList.add("active");
+        event.currentTarget.classList.add("active");
         calcular();
 
     }
