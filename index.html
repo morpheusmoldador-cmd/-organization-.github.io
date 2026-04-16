@@ -2114,15 +2114,28 @@
     }
 
     // Funcionalidade específica para Ilegal (Sub-sub menu)
-    function openSubSubTab(subSubTabId) {
-        let contents = document.querySelectorAll(".subsubtab-content");
+        function openSubTab(subTabId) {
+
+        // Reseta Subabas
+
+        let parentTabId = event.currentTarget.closest('.tab-content').id;
+
+        let contents = document.querySelectorAll(`#${parentTabId} .subtab-content`);
+
         for (let i = 0; i < contents.length; i++) contents[i].classList.remove("active");
-        
-        let links = document.querySelectorAll("#precos-ilegal .submenu a");
+
+        let links = document.querySelectorAll(`#${parentTabId} .submenu a`);
+
         for (let i = 0; i < links.length; i++) links[i].classList.remove("active");
 
-        document.getElementById(subSubTabId).classList.add("active");
+        document.getElementById(subTabId).classList.add("active");
+
         event.currentTarget.classList.add("active");
+
+        // Se for Ilegal, reseta para sub-sub aba padrão
+
+        if(subTabId === 'precos-ilegal') openSubSubTab('armas');
+
         calcular();
 
     }
