@@ -2050,106 +2050,110 @@
 </div>
 
 <script>
+    // Função principal de navegação (Abas principais)
     function handleRouting() {
         let hash = window.location.hash || '#inicio';
+        let mainTabId = hash.split('-')[0].replace('#', '');
         
-        // --- 1. ABAS PRINCIPAIS ---
-        let content = document.getElementsByClassName("tab-content");
-        for (let i = 0; i < content.length; i++) content[i].classList.remove("active");
-        let links = document.querySelectorAll("nav a");
-        for (let i = 0; i < links.length; i++) links[i].classList.remove("active");
-        
-        let mainTabName = hash.split('-')[0].replace('#', '');
-        if(!document.getElementById(mainTabName)) mainTabName = 'inicio';
-        
-        document.getElementById(mainTabName).classList.add("active");
-        let mainLink = document.querySelector(`nav a[href="#${mainTabName}"]`);
-        if(mainLink) mainLink.classList.add("active");
+        // 1. Limpar e Ativar Aba Principal
+        document.querySelectorAll(".tab-content").forEach(tab => tab.classList.remove("active"));
+        document.querySelectorAll("nav a").forEach(link => link.classList.remove("active"));
 
-        // --- 2. SUBTAB HANDLING ---
-        // Reseta todas as subabas
-        let subContent = document.getElementsByClassName("subtab-content");
-        for (let i = 0; i < subContent.length; i++) subContent[i].classList.remove("active");
-        let subLinks = document.querySelectorAll(".submenu a");
-        for (let i = 0; i < subLinks.length; i++) subLinks[i].classList.remove("active");
+        const targetTab = document.getElementById(mainTabId);
+        if (targetTab) {
+            targetTab.classList.add("active");
+            const navLink = document.querySelector(`nav a[href="#${mainTabId}"]`);
+            if (navLink) navLink.classList.add("active");
 
-        if (hash.includes('-')) {
-            let subTabId = hash.replace('#', '');
-            let targetSub = document.getElementById(subTabId);
-            if(targetSub) {
-                targetSub.classList.add("active");
-                // Destaca o link
-                let targetLink = document.querySelector(`.submenu a[onclick*="${subTabId}"]`);
-                if(targetLink) targetLink.classList.add("active");
+            // 2. Ativar automaticamente a primeira sub-aba se nenhuma estiver selecionada
+            const firstSubLink = targetTab.querySelector(".submenu a");
+            const activeSub = targetTab.querySelector(".subtab-content.active");
+            
+            if (firstSubLink && !activeSub) {
+                firstSubLink.click();
             }
-        } else {
-            // Se não tiver subtab, ativa a primeira do submenu por padrão
-            let firstSubLink = document.querySelector(`#${mainTabName} .submenu a`);
-            if(firstSubLink) firstSubLink.click();
+        }
+        
+        // Controlar visibilidade do rodapé da calculadora
+        document.getElementById('calcFooter').style.display = (mainTabId === 'precos') ? 'block' : 'none';
+        calcular();
+    }
+
+    // Função para Sub-abas (Ex: Regras > Gerais, Preços > Ilegal)
+    function openSubTab(subTabId) {
+        const targetContent = document.getElementById(subTabId);
+        if (!targetContent) return;
+
+        // Acha o container pai (tab-content) para limpar apenas os "irmãos"
+        const parentTab = targetContent.closest('.tab-content');
+        
+        // Remove active de todas as sub-abas e links deste menu
+        parentTab.querySelectorAll(".subtab-content").forEach(content => content.classList.remove("active"));
+        parentTab.querySelectorAll(".submenu:first-of-type a").forEach(link => link.classList.remove("active"));
+
+        // Ativa a selecionada
+        targetContent.classList.add("active");
+        if (event && event.currentTarget) {
+            event.currentTarget.classList.add("active");
         }
 
-        // --- 3. CALCULADORA FOOTER ---
-        document.getElementById('calcFooter').style.display = (mainTabName === 'precos') ? 'block' : 'none';
-        calcular();
-    }
-
-    // Funcionalidade para Subabas (Ação, Dominação e Preços)
-    function openSubTab(subTabId) {
-        // Reseta Subabas
-        let parentTabId = event.currentTarget.closest('.tab-content').id;
-
-        let contents = document.querySelectorAll(`#${parentTabId} .subtab-content`);
-        for (let i = 0; i < contents.length; i++) contents[i].classList.remove("active");
-        
-        let links = document.querySelectorAll(`#${parentTabId} .submenu a`);
-        for (let i = 0; i < links.length; i++) links[i].classList.remove("active");
-        
-        document.getElementById(subTabId).classList.add("active");
-        event.currentTarget.classList.add("active");
-        
-        // Se for Ilegal, reseta para sub-sub aba padrão
-        if(subTabId === 'precos-ilegal') openSubSubTab('armas');
+        // 3. Se houver um sub-sub-menu (como no Ilegal), ativa o primeiro item
+        const firstSubSub = targetContent.querySelector(".submenu a");
+        if (firstSubSub) {
+            firstSubSub.click();
+        }
 
         calcular();
     }
 
-    // Funcionalidade específica para Ilegal (Sub-sub menu)
+    // Função para Sub-sub-abas (Ex: Ilegal > Armas)
     function openSubSubTab(subSubTabId) {
-        let contents = document.querySelectorAll(".subsubtab-content");
-        for (let i = 0; i < contents.length; i++) contents[i].classList.remove("active");
-        
-        let links = document.querySelectorAll("#precos-ilegal .submenu a");
-        for (let i = 0; i < links.length; i++) links[i].classList.remove("active");
+        const targetContent = document.getElementById(subSubTabId);
+        if (!targetContent) return;
 
-        document.getElementById(subSubTabId).classList.add("active");
-        event.currentTarget.classList.add("active");
+        const parentSubTab = targetContent.closest('.subtab-content');
+
+        // Limpa sub-sub-abas irmãs
+        parentSubTab.querySelectorAll(".subsubtab-content").forEach(content => content.classList.remove("active"));
+        parentSubTab.querySelectorAll(".submenu a").forEach(link => link.classList.remove("active"));
+
+        // Ativa a selecionada
+        targetContent.classList.add("active");
+        if (event && event.currentTarget) {
+            event.currentTarget.classList.add("active");
+        }
+
         calcular();
-
     }
 
-
+    // Cálculo da calculadora
     function calcular() {
         let totalCom = 0, totalSem = 0;
-        // Calcula apenas o que está visível
-        document.querySelectorAll('.active .item-row').forEach(row => {
-            if(row.querySelector('.sel').checked) {
+        // Soma apenas itens dentro de elementos que tenham a classe .active
+        document.querySelectorAll('.tab-content.active .item-row, .subtab-content.active .item-row, .subsubtab-content.active .item-row').forEach(row => {
+            // Verifica se a linha pertence ao nível mais profundo ativo para não duplicar somas
+            if (row.closest('.active') && row.querySelector('.sel').checked) {
                 let q = parseInt(row.querySelector('.qtd').value) || 0;
-                totalCom += q * parseInt(row.dataset.com);
-                totalSem += q * parseInt(row.dataset.sem);
+                totalCom += q * parseFloat(row.dataset.com);
+                totalSem += q * parseFloat(row.dataset.sem);
             }
         });
+        
         document.getElementById('resTotalCom').innerText = totalCom.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
         document.getElementById('resTotalSem').innerText = totalSem.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
     }
 
+    // Eventos
     window.addEventListener('hashchange', handleRouting);
     document.addEventListener('input', function(e) {
         if(e.target.classList.contains('sel') || e.target.classList.contains('qtd')) calcular();
     });
     
-    // Inicialização
-    if(!window.location.hash) window.location.hash = '#inicio';
-    handleRouting();
+    // Inicialização forçada
+    window.addEventListener('load', () => {
+        if(!window.location.hash) window.location.hash = '#inicio';
+        handleRouting();
+    });
 </script>
 </body>
 </html>
